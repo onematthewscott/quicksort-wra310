@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+	<head>
+
+		<title>XA 310 Assignment 05</title>
+
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	</head>
+
+	<body>
+
+
+		<h1>XA 310 Assignment 05</h1>
+
+
+		<p>Put your assigned algorithm into the JavaScript code below.</p>
+
+
+		<script>
+
+		
+		// create the test arrays - these call the makeArray() function at the end of
+		// this script which creates a randomized array of numbers 
+		
+
+		// smallArray = 100 random numbers
+		const smallArray = makeArray(100)
+
+		// mediumArray = 1000 random numbers
+		const mediumArray= makeArray(1000)
+
+		// largeArray = 10000 random numbers
+		const largeArray= makeArray(10000)
+
+
+		// your sorting algorithm goes here
+
+		// it must accept an array as an argument and return the array sorted numerically
+
+		// please change the name to the actual name of the algorithm
+
+		function YOURSORTINGALGORITHM(inputArr) {
+			
+			// never a bad idea to see what you're getting as a argument:
+			console.log("Unsorted Input Array:", inputArr)
+
+			// set up the variable for the returned array
+			// you may have to do this differently
+			const outputArray = []
+
+			// Do your stuff here:
+
+
+
+
+			// return your new sorted algorithm here:
+			return outputArr;
+
+		}
+
+
+
+
+		// call your function once for each of the arrays and time how
+		// long each takes 
+		// remember to change the name to match the function name
+		// you used above
+
+		// console.time() uses a label to keep track of what you're timing
+		console.time("small YOURSORTINGALGORITHM")
+
+		// call your function with the small array
+		YOURSORTINGALGORITHM(smallArray)
+
+		// this ends the timer with the matching label from above
+		console.timeEnd('small YOURSORTINGALGORITHM')
+
+
+		// same thing as above with the 1000 item array
+		console.time("medium YOURSORTINGALGORITHM")
+		YOURSORTINGALGORITHM(mediumArray)
+		console.timeEnd('medium YOURSORTINGALGORITHM')
+
+		// same thing as above with the 10000 item array
+		console.time("large YOURSORTINGALGORITHM")
+		YOURSORTINGALGORITHM(largeArray)
+		console.timeEnd('large YOURSORTINGALGORITHM')
+
+
+
+
+
+
+		// You don't need to touch this; this is the function that gets called above
+		// to generate the arrays of randomized numbers
+		function makeArray(number) {
+			let array = []
+			for (let i=0; i < number; ++i) {
+				array[i]=i;
+			}
+
+			let tmp, current, top = array.length;
+
+			if(top) {
+				while(--top) {
+					current = Math.floor(Math.random() * (top + 1));
+					tmp = array[current];
+					array[current] = array[top];
+					array[top] = tmp;
+				}
+			}
+			return array;
+		}
+
+
+
+
+	</script>
+
+	</body>
+</html>

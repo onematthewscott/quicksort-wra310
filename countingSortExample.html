@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+	<head>
+
+		<title>XA 310 Assignment 05</title>
+
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	</head>
+
+	<body>
+
+
+		<h1>XA 310 Assignment 05</h1>
+
+		<p>This example uses the <strong>counting sort</strong> algorithm to sort
+		three arrays of randomized numbers.</p>
+
+		<p>Your version will be mostly the same but with a different sorting
+		algorithm.</p>
+		
+		<p>Pay attention to the time of execution though - this is where the
+		differences become noticeable.</p>
+
+
+	<script>
+
+		
+	
+	/* 
+	there is a function at the end of this script called "makeArray()" passing
+	it a number will return an array containing that many elements in a random
+	order
+	*/
+	
+
+	// smallArray = 100 random numbers
+	const smallArray = makeArray(100)
+
+	// mediumArray = 1000 random numbers
+	const mediumArray= makeArray(1000)
+
+	// largeArray = 10000 random numbers
+	const largeArray= makeArray(10000)
+
+
+	// the counting sort algorithm
+	// it accepts an array as an argument and returns the same array sorted numerically
+	function countingSort(inputArr) {
+			
+		// never a bad idea to see what you're getting as a argument:
+		console.log("Unsorted Input Array:", inputArr)
+
+		// how big is the array?
+		let n = inputArr.length
+
+		// what is the largest value?
+		let k = Math.max(...inputArr);
+		let t;
+		let temp = new Array(k + 1).fill(0);
+
+		for(let i = 0; i < n; i++){
+			t = inputArr[i];
+			temp[t]++;
+		}
+
+		for(let i = 1; i <= k; i++){
+			temp[i] = temp[i] + temp[i - 1];  
+		}
+
+		// the output array
+		let outputArr = new Array(n).fill(0);
+
+		for(let i = n - 1; i >= 0; i--) {
+			t = inputArr[i];
+			outputArr[temp[t] - 1] = t;  
+			temp[t] = temp[t] - 1;		
+		}
+
+		// return your new sorted algorithm here:
+		return outputArr;
+
+	}
+
+
+
+
+		// call your function once for each of the arrays and time how
+		// long each takes
+
+		// console.time() uses a label to keep track of what you're timing
+		console.time("small counting sort")
+
+		// call your function with the small array
+		countingSort(smallArray)
+
+		// this ends the timer with the matching label from above
+		console.timeEnd('small counting sort')
+
+
+		// same thing as above with the 1000 item array
+		console.time("medium counting sort")
+		countingSort(mediumArray)
+		console.timeEnd('medium counting sort')
+
+
+		// same thing as above with the 10000 item array
+		console.time("large counting sort")
+		countingSort(largeArray)
+		console.timeEnd('large counting sort')
+
+		
+
+
+
+
+		// You don't need to touch this; this is the function that gets called above
+		// to generate the arrays of randomized numbers
+		function makeArray(number) {
+			let array = []
+			for (let i=0; i < number; ++i) {
+				array[i]=i;
+			}
+
+			let tmp, current, top = array.length;
+
+			if(top) {
+				while(--top) {
+					current = Math.floor(Math.random() * (top + 1));
+					tmp = array[current];
+					array[current] = array[top];
+					array[top] = tmp;
+				}
+			}
+			return array;
+		}
+
+	</script>
+
+	</body>
+</html>
