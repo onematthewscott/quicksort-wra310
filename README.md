@@ -2,7 +2,7 @@
 This project is for an Advanced Web Authoring class at Michigan State. 
 
 ## Author(s)
-Matthew Hernandez (herna757@msu.edu), 
+Matthew Hernandez, 
 Nadia Richardson, 
 Nadia Theders, 
 Bryjon Trice 
