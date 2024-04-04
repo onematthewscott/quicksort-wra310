@@ -1,101 +1,80 @@
 <!DOCTYPE html>
-
 <html lang="en">
-
-	<head>
-
-		<title>XA 310 Assignment 05</title>
-
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-	</head>
-
-	<body>
-
-
-		<h1>XA 310 Assignment 05</h1>
-
-
-		<p>Put your assigned algorithm into the JavaScript code below.</p>
-
-
-		<script>
-
-		
-		// create the test arrays - these call the makeArray() function at the end of
-		// this script which creates a randomized array of numbers 
-		
-
-		// smallArray = 100 random numbers
-		const smallArray = makeArray(100);
-		// mediumArray = 1000 random numbers
-		const mediumArray= makeArray(1000);
-		// largeArray = 10000 random numbers
-		const largeArray= makeArray(10000);
-
-
-		// your sorting algorithm goes here
-
-		// it must accept an array as an argument and return the array sorted numerically
-
-		// please change the name to the actual name of the algorithm
-
-		function QuickSort(inputArr) {
-			
-			// never a bad idea to see what you're getting as a argument:
-			console.log("Unsorted Input Array:", inputArr)
-
-			// set up the variable for the returned array
-			// you may have to do this differently
-			const outputArray = []
-
-			// Do your stuff here:
-			if (arr.length <= 1) {
-				return arr;
-			}
-			
-			let pivot = arr[0]; // +1 assignment O(n) - every assignment is an additional datapoint.
-			let left = [];
-			let right = [];
-			// iterator - torque function 
-			for (let i = 1; i < arr.length; i++) {
-				arr[i] < pivot ? left.push(arr[i]) : right.push(arr[i]);
-			}
-			
-			return [...quickSort(left), pivot, ...quickSort(right)];
+<head>
+    <title>Team Quick Sort: Performance Dashboard</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            background-color: #141414;
+            color: white;
+            margin: 0;
+            padding: 20px;
+        }
+        h1 {
+            color: #ffcc00;
+            font-size: 24px;
+            text-align: center;
+        }
+        p {
+            font-size: 16px;
+            color: #ccc;
+        }
+        .results {
+            background-color: #444;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            margin-top: 20px;
+            text-align: center;
+        }
+        .result-item {
+            background: #555;
+            color: #fff;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+        }
+        #complexity {
+            font-style: italic;
+            margin-top: 15px;
+            color: #ffcc00;
+        }
+		.visualization {
+			display: flex;
+			justify-content: center;
+			align-items: flex-end;
+			height: 200px; /* Adjust based on your preference */
+			margin-top: 20px;
 		}
-		
-		console.time("'Small' QuickSort");
-		quickSort(smallArray);
-		console.timeEnd('Small QuickSort');
 
-		console.time("'Medium' QuickSort")
-		quicksort(mediumArray);
-		console.timeEnd('Medium QuickSort');
-
-		console.time("Large Quicksort");
-		quicksort(largeArray);
-		console.timeEnd("Large QuickSort");
-
-		function makeArray(number){
-			let array = []
-			for (let i = 0; i < number; ++i) {
-				array[i] = i;
-			}
-			
-			let tmp, current, top = array.length;
-			if (top) {
-				while (--top) {
-					current = Math.floor(Math.random() * (top + 1));
-					tmp = array[current];
-					array[current] = array[top];
-					array[top] = tmp;
-				}
-			}
-			return array;
+		.bar {
+			width: 2px; /* Adjust based on array size and container width */
+			background-color: #ffcc00;
+			margin: 0 1px;
 		}
-	</script>
+
+    </style>
+</head>
+<body>
+
+    <h1>Team Quick Sort: Performance Dashboard</h1>
+    <p>Real-time execution times of each Array from Small to</p>
+
+    <div id="results" class="results">
+        <div id="smallArrayTime" class="result-item"></div>
+        <div id="mediumArrayTime" class="result-item"></div>
+        <div id="largeArrayTime" class="result-item"></div>
+        <p id="complexity"></p>
+    </div>
+
+	<div id="visualization" class="visualization"></div>
+	<button id="visualize50">Visualize 50</button>
+	<button id="visualize1000">Visualize 1000</button>
+	<button id="visualize10000">Visualize 10000</button>
+
+    <script src="script.js"></script>
 </body>
 </html>
-
