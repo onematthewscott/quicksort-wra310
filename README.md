@@ -5,7 +5,7 @@ After every call, the chosen pivot occupies its correct position in the array wh
 
 
 
-## Author(s)
+## Author(s) & Co-Author(s)
 Matthew Hernandez, 
 Nadia Richardson, 
 Nadia Theders, 
