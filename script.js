@@ -23,7 +23,7 @@ async function quickSort(arr, start = 0, end = arr.length - 1) {
     }
     let index = await partition(arr, start, end); // partition the array
     if (arr.length <= 50) {
-        visualizeArray(arr); // only visualize for small arrays
+        //visualizeArray(arr); // only visualize for small arrays [this may be causing the longer compilation format.]
     }
     await quickSort(arr, start, index - 1); // sort the left side
     await quickSort(arr, index + 1, end); // sort the right side
@@ -39,9 +39,10 @@ async function partition(arr, start, end) {
             i++;
         }
     }
+    // Timeout - 
     [arr[i], arr[end]] = [arr[end], arr[i]]; // swap the pivot element to its correct position
     if (arr.length <= 50) {
-        await new Promise(resolve => setTimeout(resolve, 30)); // adding a bit of delay for visualization
+        await new Promise(resolve => setTimeout(resolve, 0)); // adding a bit of delay for visualization, this may cause performance issues. 
     }
     return i; // return the pivot index
 }
