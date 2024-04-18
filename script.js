@@ -64,3 +64,4 @@ document.getElementById('visualize').addEventListener('click', async () => {
 
     displayComplexity(); // Show the complexity at the end
 });
+// update 4/18
